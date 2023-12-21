@@ -4,11 +4,12 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class InfoCollector {
     private final HttpRequest infoRequest;
     private ArrayList<Integer[]> partLengths;
-    private int chunkSize = 10_00_00_000;
+    private int chunkSize;
     private final HttpClient downloader;
     private final int MAX_THREAD = 20;
     public InfoCollector(URI link) {
@@ -27,23 +28,22 @@ public class InfoCollector {
 
     public ArrayList<Integer[]> getPartLengths() throws IOException, InterruptedException {
         var length = this.fileLength();
-
-        var size = length / MAX_THREAD;
-        if (size > chunkSize) {
-            System.out.println(size/ 1000/ 1000);
-            chunkSize = size;
-        }
-
-        var remainLength = length;
+        chunkSize = length / MAX_THREAD;
+        var remainLength = chunkSize;
         var start = 0;
-        var end = chunkSize;
-        while (remainLength > chunkSize) {
+        var end  = chunkSize;
+        partLengths.add(new Integer[]{start, end});
+        while (remainLength < length) {
+            start += chunkSize;
+            end += chunkSize;
             partLengths.add(new Integer[]{start, end});
-            start = end+1;
-            end = end + chunkSize;
-            remainLength -= chunkSize;
+            remainLength += chunkSize;
         }
+
         partLengths.add(new Integer[]{length-remainLength+1, length});
+        partLengths.forEach(v->{
+            System.out.println(Arrays.toString(v));
+        });
         return partLengths;
     }
 
