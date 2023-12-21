@@ -30,7 +30,6 @@ public class DownloadThread extends Thread {
             length = content.read(buffer);
             if (length != -1) {
                 file.write(Arrays.copyOfRange(buffer, 0, length));
-                System.out.println(length);
             }
         }
         file.close();

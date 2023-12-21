@@ -66,6 +66,7 @@ public class Downloader {
                 destination.write(Arrays.copyOfRange(buf, 0, length));
             }
         }
+        source.close();
     }
 
     public InfoCollector getInfo() {
