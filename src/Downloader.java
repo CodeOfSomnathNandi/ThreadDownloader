@@ -8,15 +8,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Downloader {
-    private HttpClient downloader;
-    private InfoCollector info;
-    private URI link;
-    private HttpRequest.Builder tempPlateRequest;
-    private ArrayList<DownloadThread> threads;
+    private final HttpClient downloader;
+    private final InfoCollector info;
+    private final URI link;
+    private final HttpRequest.Builder tempPlateRequest;
+    private final ArrayList<DownloadThread> threads;
     private CountDownLatch latch;
-    private final int maxLatch = 10;
-    private String name;
-    public Downloader(URI link, String name) throws IOException, InterruptedException {
+    private final String name;
+    public Downloader(URI link, String name) {
         this.link = link;
         this.name = name;
         threads = new ArrayList<>();

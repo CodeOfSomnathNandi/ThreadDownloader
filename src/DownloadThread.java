@@ -7,22 +7,18 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
 public class DownloadThread extends Thread {
-    private URI link;
-    private int startLength;
-    private int endLength;
-    private HttpRequest.Builder requestTemplate;
-    private HttpClient downloader;
-    private int id;
-    private CountDownLatch latch;
-
+    private final HttpRequest.Builder requestTemplate;
+    private final HttpClient downloader;
+    private final int id;
+    private final CountDownLatch latch;
+    private int startLength, endLength;
     public DownloadThread(URI link, HttpRequest.Builder requestTemplate, HttpClient downloader, int startLength, int endLength, int id, CountDownLatch latch) {
-        this.link = link;
         this.downloader = downloader;
         this.requestTemplate = requestTemplate;
-        this.startLength = startLength;
-        this.endLength = endLength;
         this.id = id;
         this.latch = latch;
+        this.startLength = startLength;
+        this.endLength = endLength;
     }
 
     public void savePart(InputStream content,  int id) throws IOException {
@@ -32,13 +28,18 @@ public class DownloadThread extends Thread {
 
         while (length != -1) {
             length = content.read(buffer);
-            file.write(Arrays.copyOfRange(buffer, 0, length));
+            if (length != -1) {
+                file.write(Arrays.copyOfRange(buffer, 0, length));
+                System.out.println(length);
+            }
         }
         file.close();
     }
 
     @Override
     public void run() {
+        // Range: bytes=0-1023
+        requestTemplate.setHeader("Range", String.format("bytes=%d-%d", startLength, endLength));
         try {
             var stream = downloader.send(requestTemplate.build(), HttpResponse.BodyHandlers.ofInputStream());
             var content = stream.body();

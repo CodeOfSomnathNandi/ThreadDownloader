@@ -10,6 +10,7 @@ public class InfoCollector {
     private ArrayList<Integer[]> partLengths;
     private int chunkSize = 10_00_00_000;
     private final HttpClient downloader;
+    private final int MAX_THREAD = 20;
     public InfoCollector(URI link) {
         partLengths = new ArrayList<>();
         downloader = HttpClient.newHttpClient();
@@ -26,6 +27,12 @@ public class InfoCollector {
 
     public ArrayList<Integer[]> getPartLengths() throws IOException, InterruptedException {
         var length = this.fileLength();
+
+        var size = length / MAX_THREAD;
+        if (size > chunkSize) {
+            chunkSize = size;
+        }
+
         var remainLength = length;
         var start = 0;
         var end = chunkSize;

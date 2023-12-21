@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BigFileDownloader.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DownloadThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Downloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InfoCollector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="command line interface in working states">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DownloadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DownloadThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Downloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Downloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InfoCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InfoCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +76,19 @@
       <option name="presentableId" value="Default" />
       <updated>1703168687451</updated>
     </task>
+    <task id="LOCAL-00001" summary="command line interface in working states">
+      <option name="closed" value="true" />
+      <created>1703178968208</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703178968209</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="command line interface in working states" />
+    <option name="LAST_COMMIT_MESSAGE" value="command line interface in working states" />
   </component>
 </project>
