@@ -8,10 +8,10 @@ import java.util.Arrays;
 
 public class InfoCollector {
     private final HttpRequest infoRequest;
-    private ArrayList<Integer[]> partLengths;
-    private int chunkSize;
+    private ArrayList<Long[]> partLengths;
+    private long chunkSize;
     private final HttpClient downloader;
-    private final int MAX_THREAD = 20;
+    private final long MAX_THREAD = 20;
     public InfoCollector(URI link) {
         partLengths = new ArrayList<>();
         downloader = HttpClient.newHttpClient();
@@ -20,30 +20,27 @@ public class InfoCollector {
                 .uri(link)
                 .build();
     }
-    public int fileLength() throws IOException, InterruptedException {
+    public long fileLength() throws IOException, InterruptedException {
         var stream = downloader.send(infoRequest, HttpResponse.BodyHandlers.ofInputStream());
         var length = stream.headers().firstValue("Content-Length");
-        return length.map(Integer::parseInt).orElse(-1);
+        return length.map(Long::parseLong).orElse(-1L);
     }
 
-    public ArrayList<Integer[]> getPartLengths() throws IOException, InterruptedException {
+    public ArrayList<Long[]> getPartLengths() throws IOException, InterruptedException {
         var length = this.fileLength();
         chunkSize = length / MAX_THREAD;
         var remainLength = chunkSize;
-        var start = 0;
-        var end  = chunkSize;
-        partLengths.add(new Integer[]{start, end});
+        var start = 0L;
+        var end  = chunkSize-1;
+        partLengths.add(new Long[]{start, end});
         while (remainLength < length) {
-            start += chunkSize;
-            end += chunkSize;
-            partLengths.add(new Integer[]{start, end});
-            remainLength += chunkSize;
+            start += chunkSize-1;
+            end += chunkSize-1;
+            partLengths.add(new Long[]{start, end});
+            remainLength += chunkSize -1 ;
         }
-
-        partLengths.add(new Integer[]{length-remainLength+1, length});
-        partLengths.forEach(v->{
-            System.out.println(Arrays.toString(v));
-        });
+        System.out.println("Length: "+partLengths.size());
+        partLengths.add(new Long[]{remainLength-1, length});
         return partLengths;
     }
 

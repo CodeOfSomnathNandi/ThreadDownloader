@@ -11,8 +11,8 @@ public class DownloadThread extends Thread {
     private final HttpClient downloader;
     private final int id;
     private final CountDownLatch latch;
-    private int startLength, endLength;
-    public DownloadThread(URI link, HttpRequest.Builder requestTemplate, HttpClient downloader, int startLength, int endLength, int id, CountDownLatch latch) {
+    private long startLength, endLength;
+    public DownloadThread(URI link, HttpRequest.Builder requestTemplate, HttpClient downloader, long startLength, long endLength, int id, CountDownLatch latch) {
         this.downloader = downloader;
         this.requestTemplate = requestTemplate;
         this.id = id;

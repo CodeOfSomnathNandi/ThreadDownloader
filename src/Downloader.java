@@ -5,7 +5,6 @@ import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Downloader {
     private final HttpClient downloader;
@@ -26,17 +25,21 @@ public class Downloader {
                 .uri(link);
 
     }
-    private void init(InfoCollector info) throws IOException, InterruptedException {
-        latch = new CountDownLatch(info.getPartLengths().size());
+    private ArrayList<Long[]> init(InfoCollector info) throws IOException, InterruptedException {
+        var list = info.getPartLengths();
+        latch = new CountDownLatch(list.size());
+        return list;
     }
     public void setAll() throws IOException, InterruptedException {
-        init(info);
-        var list = info.getPartLengths();
-        AtomicInteger id = new AtomicInteger();
-        list.forEach(v -> {
-            threads.add(new DownloadThread(link, tempPlateRequest, downloader, v[0], v[1], id.get(), latch));
-            id.getAndIncrement();
-        });
+        var list = init(info);
+//        var list = info.getPartLengths();
+        var id = 0;
+        for (Long[] longs : list) {
+            threads.add(new DownloadThread(link, tempPlateRequest, downloader, longs[0], longs[1], id, latch));
+            id++;
+        }
+        System.out.println("Threads length: "+threads.size());
+        System.out.println("Lists length: "+list.size());
     }
 
     public void startAndWait() throws InterruptedException, IOException {
