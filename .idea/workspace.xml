@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="command line interface in working states">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DownloadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DownloadThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Downloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Downloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InfoCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InfoCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="some bug fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,11 +78,29 @@
       <option name="project" value="LOCAL" />
       <updated>1703178968209</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="command line interface fully implemented">
+      <option name="closed" value="true" />
+      <created>1703180979846</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703180979846</updated>
+    </task>
+    <task id="LOCAL-00003" summary="some bug fixed">
+      <option name="closed" value="true" />
+      <created>1703181189726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703181189726</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="command line interface in working states" />
-    <option name="LAST_COMMIT_MESSAGE" value="command line interface in working states" />
+    <MESSAGE value="command line interface fully implemented" />
+    <MESSAGE value="some bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bug fixed" />
   </component>
 </project>

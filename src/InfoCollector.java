@@ -30,6 +30,7 @@ public class InfoCollector {
 
         var size = length / MAX_THREAD;
         if (size > chunkSize) {
+            System.out.println(size/ 1000/ 1000);
             chunkSize = size;
         }
 
