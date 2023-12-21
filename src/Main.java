@@ -7,6 +7,8 @@ public class Main {
 
         var downloader = new Downloader(link, "code.exe");
         downloader.getInfo().setChunkSize(1_000_000);
+        System.out.println("file size"+ downloader.getInfo().fileLength());
+
         downloader.setAll();
         downloader.startAndWait();
 

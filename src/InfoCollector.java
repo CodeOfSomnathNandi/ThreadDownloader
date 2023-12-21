@@ -29,18 +29,15 @@ public class InfoCollector {
     public ArrayList<Long[]> getPartLengths() throws IOException, InterruptedException {
         var length = this.fileLength();
         chunkSize = length / MAX_THREAD;
-        var remainLength = chunkSize;
-        var start = 0L;
-        var end  = chunkSize-1;
-        partLengths.add(new Long[]{start, end});
-        while (remainLength < length) {
-            start += chunkSize-1;
-            end += chunkSize-1;
-            partLengths.add(new Long[]{start, end});
-            remainLength += chunkSize -1 ;
+
+        for (int i = 0; i < MAX_THREAD-1; i++) {
+            var start = chunkSize * i;
+            var end  = chunkSize * (i+1);
+            partLengths.add(new Long[]{start+1, end});
         }
+
         System.out.println("Length: "+partLengths.size());
-        partLengths.add(new Long[]{remainLength-1, length});
+        partLengths.add(new Long[]{length-chunkSize, length});
         return partLengths;
     }
 

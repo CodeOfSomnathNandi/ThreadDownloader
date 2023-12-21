@@ -32,7 +32,9 @@ public class Downloader {
     }
     public void setAll() throws IOException, InterruptedException {
         var list = init(info);
-//        var list = info.getPartLengths();
+        list.forEach(v->{
+            System.out.println(Arrays.toString(v));
+        });
         var id = 0;
         for (Long[] longs : list) {
             threads.add(new DownloadThread(link, tempPlateRequest, downloader, longs[0], longs[1], id, latch));
