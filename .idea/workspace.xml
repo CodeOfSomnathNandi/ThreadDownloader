@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="double calling and some bug fixed">
+    <list default="true" id="c46e225d-db83-47d7-add8-dc98829d9eee" name="Changes" comment="updating InfoCollector.java file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InfoCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InfoCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DownloadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DownloadThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Downloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Downloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703189756628</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updating InfoCollector.java file">
+      <option name="closed" value="true" />
+      <created>1703246626973</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703246626973</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -137,6 +147,7 @@
     <MESSAGE value="command line interface fully implemented" />
     <MESSAGE value="some bug fixed" />
     <MESSAGE value="double calling and some bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="double calling and some bug fixed" />
+    <MESSAGE value="updating InfoCollector.java file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating InfoCollector.java file" />
   </component>
 </project>

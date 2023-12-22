@@ -4,6 +4,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.concurrent.CountDownLatch;
 
 public class Downloader {
@@ -52,15 +53,24 @@ public class Downloader {
 
     private void cleanAndSave() throws IOException {
         File[] files = new File("S:\\download").listFiles();
-        var mainFile = new FileOutputStream(String.format("S:\\download\\%s", name));
-        if (files == null) {
-            throw new IOException("Files are not found in S:\\download");
+        if (files == null || files.length == 0) {
+            throw new IOException("No files found in S:\\download");
         }
-        for (File file : files) {
-            this.pushContent(new FileInputStream(file), mainFile);
+
+        Arrays.sort(files, Comparator.comparing(File::getName));
+
+        try (var mainFile = new FileOutputStream(String.format("S:\\download\\%s", name))) {
+            for (File file : files) {
+                try (var fileInputStream = new FileInputStream(file)) {
+                    pushContent(fileInputStream, mainFile);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new IOException("Error while cleaning and saving files", e);
         }
-        mainFile.close();
     }
+
 
     private void pushContent(FileInputStream source, FileOutputStream destination) throws IOException {
         byte[] buf = new byte[10_000];

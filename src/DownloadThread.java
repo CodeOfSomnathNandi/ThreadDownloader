@@ -37,18 +37,19 @@ public class DownloadThread extends Thread {
 
     @Override
     public void run() {
-        // Range: bytes=0-1023
         requestTemplate.setHeader("Range", String.format("bytes=%d-%d", startLength, endLength));
         try {
             var stream = downloader.send(requestTemplate.build(), HttpResponse.BodyHandlers.ofInputStream());
-            var content = stream.body();
-            savePart(content, id);
+            try (var content = stream.body()) {
+                savePart(content, id);
+            }
             System.out.printf("part%d.p is saved\n", id);
-            content.close();
         } catch (Exception e) {
             System.out.printf("Number %d part is not downloadable\n", id);
             e.printStackTrace();
+        } finally {
+            latch.countDown();
         }
-        latch.countDown();
     }
+
 }
