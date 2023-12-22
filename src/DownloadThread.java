@@ -23,7 +23,7 @@ public class DownloadThread extends Thread {
 
     public void savePart(InputStream content,  int id) throws IOException {
         byte[] buffer = new byte[10_000];
-        var file = new FileOutputStream(String.format("S:\\download\\part%d.p", id));
+        var file = new FileOutputStream(String.format("S:\\download\\part%d.p", id), true);
         int length = 0;
 
         while (length != -1) {

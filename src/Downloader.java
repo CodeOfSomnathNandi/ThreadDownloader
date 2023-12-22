@@ -57,11 +57,13 @@ public class Downloader {
             throw new IOException("No files found in S:\\download");
         }
 
-        Arrays.sort(files, Comparator.comparing(File::getName));
+        Arrays.sort(files);
 
-        try (var mainFile = new FileOutputStream(String.format("S:\\download\\%s", name))) {
-            for (File file : files) {
-                try (var fileInputStream = new FileInputStream(file)) {
+        try (var mainFile = new FileOutputStream(String.format("S:\\download\\%s", name), true)) {
+            for (int i = 0; i < threads.size(); i++) {
+                var f = String.format("S:\\download\\part%d.p", i);
+                System.out.println(f+ " saved");
+                try (var fileInputStream = new FileInputStream(f)) {
                     pushContent(fileInputStream, mainFile);
                 }
             }

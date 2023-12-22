@@ -33,11 +33,11 @@ public class InfoCollector {
         for (int i = 0; i < MAX_THREAD-1; i++) {
             var start = chunkSize * i;
             var end  = chunkSize * (i+1);
-            partLengths.add(new Long[]{start, end});
+            partLengths.add(new Long[]{start, end-1});
         }
 
         System.out.println("Length: " + partLengths.size());
-        partLengths.add(new Long[]{chunkSize * (MAX_THREAD - 1), length});
+        partLengths.add(new Long[]{chunkSize * (MAX_THREAD - 1), length-1});
         return partLengths;
     }
 
